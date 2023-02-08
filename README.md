@@ -1,6 +1,6 @@
 # dispenser
 
-$ bundle exec rspec
+$ bundle exec rspec - see output - atm_spec model spec.
 
 Method/program to output correct denomination total from inputs with divmod and other ruby methods.
 
