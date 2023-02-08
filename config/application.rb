@@ -24,16 +24,17 @@ module Dispenser
     config.application_name = Rails.application.class.module_parent_name
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
-
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
-
-    # Don't generate system test files.
-    config.generators.system_tests = nil
+    config.generators do |g|
+      g.orm :active_record
+      g.orm :active_record, primary_key_type: :uuid
+      g.orm :active_record, foreign_key_type: :uuid
+      g.template_engine :erb
+      g.test_framework  :rspec, fixture: false
+      g.fixture_replacement :factory_bot, dir: 'spec/factories'
+      g.stylesheets     false
+      g.javascripts     false
+      g.helper          false
+      g.system_tests    nil
+    end
   end
 end
